@@ -1,0 +1,39 @@
+# Tarantec: o portfólio, um site estático servido por nginx sem root.
+# Guia: README.md.
+#
+# A imagem vem pronta do GitHub (o CI publica a cada push na main). Para
+# testar mudanças locais, construa com a mesma tag antes de subir:
+#   docker build -t ghcr.io/agelinena/tarantec:latest . && docker compose up -d
+#
+# Uma porta só (WEB_PORT, 8080 por padrão). Sem volumes e sem segredos. Ponha
+# um proxy com HTTPS na frente; para isolar de vez, deixe o container numa rede
+# `internal: true` que só o proxy alcance.
+services:
+  tarantec:
+    image: ghcr.io/agelinena/tarantec:${TARANTEC_TAG:-latest}
+    container_name: tarantec
+    restart: unless-stopped
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=8m
+    pids_limit: 32
+    mem_limit: 64m
+    memswap_limit: 64m
+    cpus: 0.5
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+    ports:
+      - "${WEB_PORT:-8080}:8080"
+    networks:
+      - tarantec-web
+
+networks:
+  tarantec-web:
+    name: tarantec-web

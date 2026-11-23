@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="190 410 540 290" role="img" aria-label="Bitsy, o mascote do Tarantec">
+  <g fill="none" stroke="#e6edf3" stroke-width="15" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="245,497 357,433 412,508"/>
+    <polyline points="492,508 558,430 705,540"/>
+    <line x1="277" y1="557" x2="388" y2="557"/>
+    <line x1="518" y1="557" x2="586" y2="557"/>
+    <polyline points="216,600 378,680 420,616"/>
+    <polyline points="486,616 540,677 685,618"/>
+  </g>
+  <circle cx="452" cy="557" r="68" fill="#e6edf3"/>
+  <circle cx="452" cy="557" r="26" fill="#e5231f"/>
+</svg>
