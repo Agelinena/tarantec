@@ -6,10 +6,14 @@ LABEL org.opencontainers.image.title="tarantec" \
       org.opencontainers.image.source="https://github.com/Agelinena/tarantec" \
       org.opencontainers.image.licenses="AGPL-3.0-only"
 
+USER root
+# Correções do Alpine que saíram depois da imagem base (o Trivy barra o build
+# sem elas). A execução semanal do CI reconstrói sem cache para pegar as novas.
+RUN apk upgrade --no-cache
+
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --chown=root:root --chmod=644 site/ /usr/share/nginx/html/
 # Pastas precisam de x para o nginx entrar nelas.
-USER root
 RUN find /usr/share/nginx/html -type d -exec chmod 755 {} + \
  && rm -f /usr/share/nginx/html/50x.html
 USER 101

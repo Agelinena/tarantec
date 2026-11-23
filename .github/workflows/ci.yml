@@ -17,6 +17,10 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  # Toda segunda: reconstrói sem cache para entrar o que o Alpine corrigiu na
+  # semana (o apk upgrade do Dockerfile), e o servidor puxa a imagem nova.
+  schedule:
+    - cron: "17 9 * * 1"
 
 permissions:
   contents: read
@@ -107,6 +111,8 @@ jobs:
           context: .
           load: true
           tags: tarantec:ci
+          pull: true
+          no-cache: ${{ github.event_name == 'schedule' }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 

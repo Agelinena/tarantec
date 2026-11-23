@@ -60,7 +60,7 @@ git push ─▶ GitHub Actions ─▶ GHCR ◀── servidor confere a cada 5 m
 | 🏗️ **Build** | Cria a imagem, sobe o container como no servidor (só leitura, sem capabilities) e testa: 200, 404, 405 no POST, CSP, `.env` escondido, sem root. Depois, Trivy (CRITICAL/HIGH). Na `main`, publica `latest` e `sha-<commit>` no GHCR |
 | 🚀 **Deploy** | Registra no resumo da execução a imagem publicada |
 
-Em pull request o pipeline vai até o Build, sem publicar.
+Em pull request o pipeline vai até o Build, sem publicar. Toda segunda ele também roda sozinho e reconstrói a imagem sem cache: o `apk upgrade` do Dockerfile traz as correções do Alpine da semana, e o servidor puxa a imagem nova.
 
 **Por que o servidor puxa, em vez de o GitHub empurrar:** para empurrar, o GitHub precisaria de uma chave e de um caminho até o servidor. Puxando, o servidor só faz uma saída para o GHCR, e um vazamento no GitHub não abre nada em casa. O pior que uma imagem ruim faz é trocar o site, num container só leitura, sem root e numa rede sem saída.
 
