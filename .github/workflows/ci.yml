@@ -1,3 +1,15 @@
+# Tarantec: CI/CD do portfólio.
+#
+#   Setup → Validação → Build → Deploy
+#
+# Em pull request roda até o Build (sem publicar). Na main, o Build publica a
+# imagem no GHCR e o Deploy registra o que foi para o ar. Quem atualiza o
+# servidor é o próprio servidor: ele confere o GHCR de tempos em tempos e
+# recria o container se a imagem mudou. Nada daqui entra no servidor, e
+# nenhuma chave dele fica no GitHub.
+#
+# Actions fixadas pelo commit (o Dependabot atualiza): uma tag movida por
+# quem invadiu a action não muda o que roda aqui.
 name: Pipeline Tarantec
 
 on:
