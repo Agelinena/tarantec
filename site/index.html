@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tarantec · Lucas Amaral</title>
+  <meta name="description" content="Lucas Amaral: Segurança Cibernética, Blue Team e SOC. O Tarantec é o meu homelab e a minha marca: do firewall ao alerta.">
+  <meta name="theme-color" content="#0d1117">
+  <meta property="og:title" content="Tarantec · Lucas Amaral">
+  <meta property="og:description" content="Blue Team, SOC e homelab. Quem fica na teia sente cada vibração.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/poppins-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/tema.js"></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#sobre">Pular para o conteúdo</a>
+
+  <header class="nav" id="nav">
+    <a class="brand" href="#topo" aria-label="Tarantec, início">
+      <img src="img/bitsy.svg" alt="" width="40" height="22">
+      <span>TARANTEC</span>
+    </a>
+    <nav class="nav__links" aria-label="Seções">
+      <a href="#sobre">Sobre</a>
+      <a href="#teia">A teia</a>
+      <a href="#soc">SOC ao vivo</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#trajetoria">Trajetória</a>
+    </nav>
+    <div class="nav__acoes">
+      <button class="tema" id="tema" type="button" aria-label="Mudar para o tema claro">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path class="lua" d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/><g class="sol"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg>
+      </button>
+      <a class="btn btn--red btn--sm" href="#contato">Fala comigo</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="topo">
+      <canvas class="hero__teia" id="teiaCanvas" aria-hidden="true"></canvas>
+
+      <div class="hero__bitsy" aria-hidden="true">
+        <span class="fio"></span>
+        <svg class="bitsy" viewBox="190 410 540 290">
+          <g class="bitsy__pernas">
+            <polyline points="245,497 357,433 412,508"/>
+            <polyline points="492,508 558,430 705,540"/>
+            <line x1="277" y1="557" x2="388" y2="557"/>
+            <line x1="518" y1="557" x2="586" y2="557"/>
+            <polyline points="216,600 378,680 420,616"/>
+            <polyline points="486,616 540,677 685,618"/>
+          </g>
+          <circle class="bitsy__corpo" cx="452" cy="557" r="68"/>
+          <circle class="bitsy__olho" cx="452" cy="557" r="26"/>
+        </svg>
+      </div>
+
+      <div class="hero__texto">
+        <p class="kicker">Blue Team · SOC · Homelab</p>
+        <h1 class="hero__titulo">Atualização <span class="grad">teste</span></h1>
+        <p class="hero__tag">Eu sou o <strong>Lucas Amaral</strong>, estudante de Segurança Cibernética no Senac RS. O <strong>Tarantec</strong> é o meu laboratório: um homelab de verdade que eu construo, monitoro e endureço, do firewall ao alerta.</p>
+        <div class="hero__cta">
+          <a class="btn btn--red" href="#teia">Ver a teia</a>
+          <a class="btn btn--ghost" href="#soc">Testar a defesa ↓</a>
+        </div>
+        <p class="term"><span class="term__prompt">bitsy@tarantec:~$</span> <span id="digitado">tail -f /var/log/teia.log</span><span class="term__cursor" aria-hidden="true"></span></p>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee">
+      <div class="marquee__linha">
+        <span>Proxmox</span><i></i><span>OPNsense</span><i></i><span>WireGuard</span><i></i><span>Traefik</span><i></i><span>CrowdSec</span><i></i><span>Authentik</span><i></i><span>Vaultwarden</span><i></i><span>Grafana</span><i></i><span>Prometheus</span><i></i><span>Loki</span><i></i><span>Docker</span><i></i><span>Python</span><i></i><span>GitHub Actions</span><i></i>
+        <span aria-hidden="true">Proxmox</span><i></i><span aria-hidden="true">OPNsense</span><i></i><span aria-hidden="true">WireGuard</span><i></i><span aria-hidden="true">Traefik</span><i></i><span aria-hidden="true">CrowdSec</span><i></i><span aria-hidden="true">Authentik</span><i></i><span aria-hidden="true">Vaultwarden</span><i></i><span aria-hidden="true">Grafana</span><i></i><span aria-hidden="true">Prometheus</span><i></i><span aria-hidden="true">Loki</span><i></i><span aria-hidden="true">Docker</span><i></i><span aria-hidden="true">Python</span><i></i><span aria-hidden="true">GitHub Actions</span><i></i>
+      </div>
+    </div>
+
+    <!-- SOBRE -->
+    <section class="secao sobre" id="sobre">
+      <p class="rotulo">Manifesto</p>
+      <p class="palavras" id="manifesto">Eu gosto de entender como as coisas funcionam por baixo dos panos e de transformar isso em projeto real. Por isso mantenho um servidor em casa construído com segurança desde o desenho: rede segmentada, cada serviço isolado no seu container, login único para tudo e um painel que avisa quando algo sai do normal. Busco a minha primeira vaga em SOC, Blue Team ou pentest júnior.</p>
+
+      <div class="numeros">
+        <div class="numero revelar"><strong data-contar="18">0</strong><span>stacks rodando no servidor</span></div>
+        <div class="numero revelar"><strong data-contar="8">0</strong><span>apps próprios, um para cada perna do Bitsy</span></div>
+        <div class="numero revelar"><strong data-contar="1">0</strong><span>login (SSO) para todos os serviços</span></div>
+        <div class="numero revelar"><strong>0</strong><span>senhas ou chaves no git</span></div>
+      </div>
+    </section>
+
+    <!-- BITSY -->
+    <section class="secao bitsy-secao" id="bitsy">
+      <div class="bitsy-secao__arte revelar">
+        <img src="img/bitsy.svg" alt="Bitsy, a aranha mascote do Tarantec, com o olho vermelho aceso" width="540" height="290">
+      </div>
+      <div class="bitsy-secao__texto revelar">
+        <p class="rotulo">Conheça o Bitsy</p>
+        <h2>Uma aranha vigilante que vive na teia.</h2>
+        <p>A teia é a rede: cada fio é uma regra, cada rede isolada é uma camada. O <span class="vermelho">olho vermelho</span> é o alerta, que nunca dorme. E as oito pernas são as frentes do laboratório:</p>
+        <ul class="pernas">
+          <li>Rede</li><li>Identidade</li><li>Segredos</li><li>Monitoramento</li>
+          <li>Automação</li><li>IA local</li><li>Apps</li><li>Documentação</li>
+        </ul>
+        <p class="nota">Tarantec = <em>tarântula</em> + <em>tec</em>.</p>
+      </div>
+    </section>
+
+    <!-- A TEIA (homelab) -->
+    <section class="secao teia" id="teia">
+      <p class="rotulo">A teia</p>
+      <h2>O caminho de um pacote até um app meu.</h2>
+      <p class="secao__intro">Nada em casa fica exposto direto à internet. Cada camada filtra alguma coisa, e todas mandam log para o mesmo lugar.</p>
+
+      <ol class="camadas">
+        <li class="camada revelar"><span class="camada__n">01</span><div><h3>Borda na nuvem</h3><p>Uma VPS em São Paulo recebe o tráfego. O nftables descarta em silêncio tudo que não vem do Brasil, e o HAProxy repassa o resto por um túnel <strong>WireGuard</strong>, sem abrir o TLS.</p></div></li>
+        <li class="camada revelar"><span class="camada__n">02</span><div><h3>Firewall</h3><p><strong>OPNsense</strong> separa a rede de casa da rede dos servidores. A gestão (Proxmox, NAS, SSH) só abre pela rede local ou pela VPN.</p></div></li>
+        <li class="camada revelar"><span class="camada__n">03</span><div><h3>Proxy e TLS</h3><p><strong>Traefik</strong> termina o TLS com certificado curinga (Let's Encrypt, desafio DNS) e só aceita o IP real de quem vem pelo túnel.</p></div></li>
+        <li class="camada revelar"><span class="camada__n">04</span><div><h3>Reputação</h3><p><strong>CrowdSec</strong> lê os logs do Traefik e bane IPs que fazem força bruta, varredura ou abuso, direto no proxy.</p></div></li>
+        <li class="camada revelar"><span class="camada__n">05</span><div><h3>Identidade</h3><p><strong>Authentik</strong> é o login único: OIDC dentro dos apps que falam o protocolo e forward-auth no proxy para os que não falam. Senhas e segredos ficam no <strong>Vaultwarden</strong>.</p></div></li>
+        <li class="camada revelar"><span class="camada__n">06</span><div><h3>Apps isolados</h3><p>Cada stack Docker tem as suas redes. Quem não precisa de internet fica numa rede <code>internal</code>: se for invadido, não alcança mais nada.</p></div></li>
+      </ol>
+
+      <div class="olho-que-ve revelar">
+        <div class="olho-que-ve__icone" aria-hidden="true"><span></span></div>
+        <div>
+          <h3>O olho vermelho</h3>
+          <p><strong>Grafana</strong>, <strong>Prometheus</strong> e <strong>Loki</strong> juntam métricas e logs de tudo: servidor, containers, GPU, Proxmox, OPNsense, a VPS e os sites. Os acessos ganham país pela minha base de GeoIP, e os alertas chegam por e-mail. Os backups saem cifrados com restic para o Backblaze B2.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOC AO VIVO -->
+    <section class="secao soc" id="soc">
+      <p class="rotulo">SOC ao vivo</p>
+      <h2>Escolha um ataque e veja onde a teia segura.</h2>
+      <p class="secao__intro">Uma simulação com as regras que eu uso de verdade. Os IPs são de documentação.</p>
+
+      <div class="soc__ataques" role="group" aria-label="Ataques">
+        <button type="button" class="chip" data-ataque="geo">Varredura de fora do Brasil</button>
+        <button type="button" class="chip" data-ataque="forca">Força bruta no login</button>
+        <button type="button" class="chip" data-ataque="flood">Robô martelando um app público</button>
+        <button type="button" class="chip" data-ataque="painel">Painel admin sem login</button>
+        <button type="button" class="chip" data-ataque="saida">Container invadido tenta sair</button>
+      </div>
+
+      <div class="soc__trilha" id="trilha" aria-hidden="true">
+        <span class="no" data-no="0">Internet</span>
+        <span class="no" data-no="1">VPS</span>
+        <span class="no" data-no="2">Traefik</span>
+        <span class="no" data-no="3">CrowdSec</span>
+        <span class="no" data-no="4">Authentik</span>
+        <span class="no" data-no="5">App</span>
+        <span class="pacote" id="pacote"></span>
+      </div>
+
+      <div class="soc__log" role="log" aria-live="polite">
+        <div class="soc__log-barra"><i></i><i></i><i></i><span>loki · {job="teia"}</span></div>
+        <pre id="log">Escolha um ataque acima.</pre>
+      </div>
+    </section>
+
+    <!-- PROJETOS -->
+    <section class="secao projetos" id="projetos">
+      <p class="rotulo">Projetos</p>
+      <h2>O que roda na teia.</h2>
+      <p class="secao__intro">Tudo aberto no GitHub e com login pelo Authentik quando precisa de conta.</p>
+
+      <div class="cards">
+        <a class="card card--destaque revelar" href="https://github.com/Agelinena/bergatrix">
+          <span class="card__tag">Infraestrutura</span>
+          <h3>Bergatrix</h3>
+          <p>O núcleo do homelab: Proxmox, NAS e Docker com stacks numeradas por dependência (rede, segurança, apps, monitoramento), scripts para subir e derrubar na ordem certa, documentação e CI.</p>
+          <span class="card__ir">Ver no GitHub →</span>
+        </a>
+        <a class="card revelar" href="https://github.com/Agelinena/bergastream">
+          <span class="card__tag">Python · Flutter</span>
+          <h3>Bergastream</h3>
+          <p>Meu servidor de música, com app para Android (inclusive Android Auto), Windows, Linux e web.</p>
+        </a>
+        <a class="card revelar" href="https://github.com/Agelinena/berganews">
+          <span class="card__tag">IA local · RSS</span>
+          <h3>Berganews</h3>
+          <p>Leitor de notícias que resume e agrupa matérias com IA rodando na minha GPU.</p>
+        </a>
+        <a class="card revelar" href="https://github.com/Agelinena/drop">
+          <span class="card__tag">Criptografia</span>
+          <h3>Drop</h3>
+          <p>Texto e arquivos entre dois navegadores, cifrados de ponta a ponta. Sem conta, sem disco, numa rede isolada.</p>
+        </a>
+        <a class="card revelar" href="https://github.com/Agelinena/transcriptor">
+          <span class="card__tag">Whisper · GPU</span>
+          <h3>Transcriptor</h3>
+          <p>Transcrição de áudio e vídeo com faster-whisper na GPU, auto-hospedada.</p>
+        </a>
+        <a class="card revelar" href="https://github.com/Agelinena/legendarr">
+          <span class="card__tag">Ollama</span>
+          <h3>Legendarr</h3>
+          <p>Legendas em português com tradução local por IA, sincronia e verificação de áudio.</p>
+        </a>
+        <a class="card revelar" href="https://github.com/Agelinena/doberga">
+          <span class="card__tag">Flutter · offline</span>
+          <h3>Doberga</h3>
+          <p>Utilidades do dia a dia da família (compras, tarefas recorrentes, agenda e notas) com sincronização offline.</p>
+        </a>
+        <a class="card revelar" href="https://github.com/Agelinena/bergatrix/tree/main/00-infrastructure/bergakup">
+          <span class="card__tag">Go · restic</span>
+          <h3>Bergakup</h3>
+          <p>Backup do servidor: agente em Go, restic e Backblaze B2, com painel e login pelo Authentik.</p>
+        </a>
+        <a class="card revelar" href="https://github.com/Agelinena/claude-sync">
+          <span class="card__tag">Nextcloud</span>
+          <h3>claude-sync</h3>
+          <p>Minhas conversas com o Claude Code sincronizadas pelo meu Nextcloud, para continuar de qualquer PC.</p>
+        </a>
+        <a class="card revelar" href="https://github.com/Agelinena/Bergafin-web">
+          <span class="card__tag">Fork · SSO</span>
+          <h3>Bergafin</h3>
+          <p>Jellyfin com login só pelo Authentik: plugin próprio e forks do web, do Android e do receptor Cast.</p>
+        </a>
+        <a class="card revelar" href="https://github.com/Agelinena/Caixa-remedio">
+          <span class="card__tag">IoT · faculdade</span>
+          <h3>Caixa de remédios</h3>
+          <p>Projeto de IoT do Senac: uma caixa que lembra a hora do remédio, com app Android.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- TRAJETÓRIA -->
+    <section class="secao trajetoria" id="trajetoria">
+      <p class="rotulo">Trajetória</p>
+      <h2>Do set de filmagem ao SOC.</h2>
+      <p class="secao__intro">Antes da segurança, eu montava estúdio, cabeava câmera e mesa de som e cuidava do backup de cada gravação. A obsessão por detalhe veio junto.</p>
+
+      <ol class="linha">
+        <li class="revelar"><span class="quando">out 2026 · hoje</span><h3>Técnico de Suporte em TI Júnior</h3><p class="linha__onde">Assist Cloud</p></li>
+        <li class="revelar"><span class="quando">jul · out 2026</span><h3>Estagiário em Segurança da Informação</h3><p class="linha__onde">AESC · Associação Educadora São Carlos</p><p>Triagem de incidentes no CrowdStrike, segurança de e-mail com Trend AI, DLP, Active Directory, firewalls, relatórios de acesso e palestras de conscientização.</p></li>
+        <li class="revelar"><span class="quando">2024 · 2026</span><h3>Analista de conversão e produtor audiovisual</h3><p class="linha__onde">Clube do Valor</p></li>
+        <li class="revelar"><span class="quando">2024</span><h3>Produtor audiovisual</h3><p class="linha__onde">PS Estúdio</p><p>Estúdio, câmeras, mesa de som, gravação, streaming e backup dos arquivos.</p></li>
+        <li class="revelar"><span class="quando">2022 · 2024</span><h3>Jovem aprendiz</h3><p class="linha__onde">Espro</p></li>
+      </ol>
+
+      <div class="duas-colunas">
+        <div class="bloco revelar">
+          <h3>Formação</h3>
+          <ul class="lista">
+            <li><strong>Segurança Cibernética</strong> · Senac RS · 2026 a 2029</li>
+            <li><strong>Técnico em Cinema</strong> (ensino médio) · IFRS · 2020</li>
+          </ul>
+        </div>
+        <div class="bloco revelar">
+          <h3>Certificados</h3>
+          <ul class="lista">
+            <li>Segurança de redes: firewall, WAF e SIEM · Alura</li>
+            <li>Pentest: explorando vulnerabilidades em aplicações web · Alura</li>
+            <li>Fundamental Hacking (60 h) · HackerSec</li>
+            <li>Python com Orientação a Objetos · Alura</li>
+            <li>MySQL · Alura</li>
+          </ul>
+        </div>
+        <div class="bloco bloco--obra revelar">
+          <h3>Em construção</h3>
+          <ul class="lista lista--check">
+            <li>Regras de detecção no Grafana/Loki mapeadas ao MITRE ATT&amp;CK</li>
+            <li>Ataques simulados no lab, com write-up de cada detecção</li>
+            <li>Triagem automática: alerta → enriquecimento → chamado</li>
+            <li>Certificações ISC2 CC e CompTIA Security+</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADESIVOS -->
+    <section class="secao adesivos" aria-label="Adesivos">
+      <p class="rotulo">Cola na teia</p>
+      <p class="adesivos__dica">Pode arrastar os adesivos.</p>
+      <div class="adesivos__area" id="adesivos">
+        <span class="adesivo a1">#BlueTeam</span>
+        <span class="adesivo a2">self-hosted</span>
+        <span class="adesivo a3">logs &gt; achismo</span>
+        <span class="adesivo a4">RTFM</span>
+        <span class="adesivo a5">zero trust</span>
+        <span class="adesivo a6"><img src="img/bitsy.svg" alt="Bitsy" width="64" height="35"></span>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="contato" id="contato">
+      <h2>Quer trocar ideia sobre SOC, homelab ou Blue Team?</h2>
+      <p>Fala comigo. O Bitsy sente a vibração.</p>
+      <div class="hero__cta">
+        <a class="btn btn--branco" href="https://www.linkedin.com/in/lucaslindemann">LinkedIn</a>
+        <a class="btn btn--branco" href="mailto:lucaslamaral@proton.me">E-mail</a>
+        <a class="btn btn--contorno" href="https://github.com/Agelinena">GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <img src="img/bitsy.svg" alt="" width="48" height="26">
+    <p>Bitsy está de olho. Sempre.</p>
+    <p class="rodape__mini">© 2026 Tarantec · servido do meu homelab, publicado pelo <a href="https://github.com/Agelinena/tarantec">GitHub Actions</a></p>
+  </footer>
+</body>
+</html>
