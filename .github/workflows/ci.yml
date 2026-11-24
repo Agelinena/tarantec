@@ -35,6 +35,9 @@ jobs:
         run: |
           find site -type f | sort
           du -sh site
+      
+      - name: Mostrar Data
+        run: date
 
   validacao:
     name: "✅ Validação"
