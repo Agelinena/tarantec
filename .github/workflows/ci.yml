@@ -37,7 +37,7 @@ jobs:
           du -sh site
       
       - name: Mostrar Data
-        run: date
+        run: data
 
   validacao:
     name: "✅ Validação"
@@ -81,7 +81,6 @@ jobs:
   build:
     name: "🏗️ Build"
     runs-on: ubuntu-latest
-    needs: validacao
     timeout-minutes: 15
     permissions:
       contents: read
